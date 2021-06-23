@@ -16,16 +16,10 @@ class BookFormModal extends React.Component {
             newBookData: []
         }
     }
-    sendForm = (e) => {
-        e.preventDefault()
+
+=======
 
 
-        const reqBody = {
-            email: this.props.auth0.user.email,
-            name: this.state.newName,
-            description: this.state.newDesc,
-            status: this.state.newStatus
-        }
         axios.post(`${process.env.REACT_APP_SERVER}/book`, reqBody).then(response => {
             this.setState({
                 newBookData: response.data.Books
@@ -36,6 +30,7 @@ class BookFormModal extends React.Component {
         )
 
     }
+
     render() {
 
         return (
@@ -69,6 +64,7 @@ class BookFormModal extends React.Component {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
         )
     }
 }

@@ -1,4 +1,3 @@
-  
 import React, { Component } from 'react'
 import { withAuth0 } from "@auth0/auth0-react";
 import Card from 'react-bootstrap/Card';
@@ -26,6 +25,14 @@ export class Profile extends Component {
   </Card.Body>
 </Card>
 
+
+
+
+            // <div>
+            //     <h2>{this.state.userName}</h2>
+            //     <p>{this.state.userEmail}</p>
+            //     <img src={this.state.userPicture} alt={this.state.userName} />
+            // </div>
         )
     }
 }
