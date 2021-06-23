@@ -49,10 +49,10 @@ class Book extends React.Component {
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        src="https://images-na.ssl-images-amazon.com/images/I/51UW1849rJL._AC_SX679_.jpg"
+                                        src="https://img.freepik.com/free-vector/seamless-gold-rhombus-grid-pattern-black-background_53876-97589.jpg?size=626&ext=jpg"
                                         alt="First slide"
                                     />
-                                    <Carousel.Caption style={{'margin-bottom':'20%' , 'color':'black'}}>
+                                    <Carousel.Caption style={{'margin-bottom':'20%' , 'color':'white'}}>
                                         <h1>{value.name}</h1>
                                         <p>{value.description}</p>
                                         <p>{value.status}</p>
