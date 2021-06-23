@@ -19,7 +19,6 @@ class BookFormModal extends React.Component {
 
     sendForm = (e) => {
         e.preventDefault()
-        // we are going to create a request body object, which will contain the email and the cat name to be sent over to the backend server
 
         const reqBody = {
             email: this.props.auth0.user.email,
@@ -28,7 +27,6 @@ class BookFormModal extends React.Component {
             status: this.state.newStatus
         }
 
-        // to send a request for creating new data, we will be using the POST method
         axios.post(`${process.env.REACT_APP_SERVER}/book`, reqBody).then(response => {
             this.setState({
                 newBookData: response.data.Books
