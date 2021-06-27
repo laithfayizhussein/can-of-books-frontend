@@ -6,7 +6,7 @@ import axios from 'axios';
 import { withAuth0 } from "@auth0/auth0-react";
 
 
-class BookFormModal extends React.Component {
+class BookUpdateFormModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,28 +16,29 @@ class BookFormModal extends React.Component {
             newBookData: []
         }
     }
+    sendForm = (e) => {
+        e.preventDefault()
 
-=======
-
-
-        axios.post(`${process.env.REACT_APP_SERVER}/book`, reqBody).then(response => {
-            this.setState({
-                newBookData: response.data.Books
-            })
-            this.props.newBooks(response.data);
+        const reqBody = {
+            email: this.props.auth0.user.email,
+            name: this.state.newName,
+            description: this.state.newDesc,
+            status: this.state.newStatus
+        }
+        axios.put(`${process.env.REACT_APP_SERVER}/book/${this.props.BookIndex}`, reqBody).then(response => {
+            this.props.booksDataAfterUpdate(response.data);
         }).catch(error =>
             alert(error.message)
         )
 
     }
-
     render() {
 
         return (
 
             <Modal show={this.props.formStatus} onHide={this.props.modalClosed}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New Book</Modal.Title>
+                    <Modal.Title>Update Book</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={this.sendForm}>
@@ -54,7 +55,7 @@ class BookFormModal extends React.Component {
                             <Form.Control type="text" placeholder="Enter status" onChange={(e) => this.setState({ newStatus: e.target.value })} />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Add Book
+                            Update Book
                         </Button>
                     </Form>
                 </Modal.Body>
@@ -64,9 +65,8 @@ class BookFormModal extends React.Component {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
         )
     }
 }
 
-export default withAuth0(BookFormModal);
+export default withAuth0(BookUpdateFormModal);
